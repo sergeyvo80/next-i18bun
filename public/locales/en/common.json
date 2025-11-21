@@ -1,0 +1,12 @@
+{
+  "welcome": "Welcome to our application",
+  "description": "This is a multilingual Next.js application",
+  "switch_language": "Switch language",
+  "current_language": "Current language",
+  "home": "Home",
+  "about": "About",
+  "login": "Login",
+  "logout": "Logout",
+
+  "contact": "Contact"
+}

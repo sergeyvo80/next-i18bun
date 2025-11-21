@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/app/[lng]/layout.tsx", "src/proxy.ts", "middleware-.ts-", "src/app/layout.tsx"  ],
   "exclude": ["node_modules"]
 }
