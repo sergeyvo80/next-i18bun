@@ -3,7 +3,7 @@
 import { useParams, usePathname } from 'next/navigation';
 import { useLinkWithLocale } from '@/hooks/useLinkWithLocale';
 import { LocalizedLink } from '@/components/LocalizedLink/LocalizedLink';
-import LanguageSwitcher from '@/components/LanguageSwither';
+import LanguageSwitcher from '@/components/layout/LanguageSwither';
 import styles from './Header.module.scss';
 
 interface Props {

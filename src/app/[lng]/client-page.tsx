@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect } from 'react';
-import { LanguageSwitcher } from '@/components/LanguageSwither';
+import { LanguageSwitcher } from '@/components/layout/LanguageSwither';
 import { useParams } from 'next/navigation';
 
 interface ClientPageProps {
