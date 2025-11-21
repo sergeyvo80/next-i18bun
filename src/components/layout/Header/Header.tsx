@@ -1,11 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
-import styles from './Header.module.scss';
 import { useLinkWithLocale } from '@/hooks/useLinkWithLocale';
 import { LocalizedLink } from '@/components/LocalizedLink/LocalizedLink';
-import { LanguageSwitcher } from '@/components/LanguageSwither';
+import LanguageSwitcher from '@/components/LanguageSwither';
+import styles from './Header.module.scss';
 
 interface Props {
   home: string;
@@ -28,9 +27,6 @@ const Header = ({
   return (
     <header className={styles.Header}>      
       <nav className={styles.menu}>
-
-        {lng} - 
-
         <div className={pathname === getLocalizedHref('') ? styles.linkActive : ''}>
           <LocalizedLink href="/">{home}</LocalizedLink>
         </div>
@@ -43,12 +39,9 @@ const Header = ({
         <div className={pathname.includes('/logout') ? styles.linkActive : ''}>
           <LocalizedLink href="/logout">{logout}</LocalizedLink>
         </div>
-
-<div>
-  <LanguageSwitcher lng={lng} />
-</div>
-
-
+        <div>
+          <LanguageSwitcher lng={lng} />
+        </div>
       </nav>
     </header>
   );

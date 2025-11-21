@@ -1,13 +1,13 @@
 'use client'
 
-import { useRouter, usePathname } from 'next/navigation'
-import { languages } from '@/i18n/settings'
+import { useRouter, usePathname } from 'next/navigation';
+import { languages } from '@/i18n/settings';
 
 interface LanguageSwitcherProps {
-  lng: string
+  lng: string;
 }
 
-export function LanguageSwitcher({ lng }: LanguageSwitcherProps) {
+const LanguageSwitcher = ({ lng }: LanguageSwitcherProps) => {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -20,7 +20,6 @@ export function LanguageSwitcher({ lng }: LanguageSwitcherProps) {
     <select 
       value={lng}
       onChange={(e) => switchLanguage(e.target.value)}
-      className="border rounded px-2 py-1"
     >
       {languages.map((lng) => (
         <option key={lng} value={lng}>
@@ -30,3 +29,5 @@ export function LanguageSwitcher({ lng }: LanguageSwitcherProps) {
     </select>
   )
 }
+
+export default LanguageSwitcher;

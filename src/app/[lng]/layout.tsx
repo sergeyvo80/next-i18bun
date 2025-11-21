@@ -26,7 +26,6 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
             logout={t('logout')}
           />
           <Main>
-            {lng}
             {children}
           </Main>
           <Footer />
@@ -34,7 +33,6 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
       </body>
     </html>
   );
-
 };
 
 export default LocaleLayout;
