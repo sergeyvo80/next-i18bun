@@ -7,7 +7,7 @@ interface LocalizedLinkProps {
   href: string
   children: React.ReactNode
   className?: string
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
 const LocalizedLink = ({ href, children, className, onClick }: LocalizedLinkProps) => {

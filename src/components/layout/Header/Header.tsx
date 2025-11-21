@@ -1,10 +1,11 @@
 'use client';
 
-import { useParams, usePathname } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useLinkWithLocale } from '@/hooks/useLinkWithLocale';
 import { LocalizedLink } from '@/components/LocalizedLink/LocalizedLink';
 import LanguageSwitcher from '@/components/layout/LanguageSwither';
 import styles from './Header.module.scss';
+
 
 interface Props {
   home: string;
@@ -19,10 +20,36 @@ const Header = ({
   login,
   logout,
 }: Props): React.ReactElement => {
+  const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
   const lng = params.lng as string;
   const { getLocalizedHref } = useLinkWithLocale();
+
+
+  const logoutHandler = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    const logout = async () => {
+      try {
+        const response = await fetch('/api/auth/logout', {
+          method: 'POST',
+          credentials: 'include'
+        });
+
+        if (response.ok) {
+          router.push('/login');
+        } else {
+          console.error('Logout failed');
+        }
+
+      } catch (error) {
+        console.error('Logout error:', error);
+      }
+    }
+
+    logout();
+  };
 
   return (
     <header className={styles.Header}>      
@@ -37,7 +64,7 @@ const Header = ({
           <LocalizedLink href="/login">{login}</LocalizedLink>
         </div>
         <div className={pathname.includes('/logout') ? styles.linkActive : ''}>
-          <LocalizedLink href="/logout">{logout}</LocalizedLink>
+          <LocalizedLink href="/logout" onClick={logoutHandler}>{logout}</LocalizedLink>
         </div>
         <div>
           <LanguageSwitcher lng={lng} />

@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import crypto from 'node:crypto';
 
 type JwtPayload = Record<string, unknown>;
@@ -50,3 +51,13 @@ export const signJwt = (payload: JwtPayload, expiresInSeconds: number = 60 * 60)
 
   return `${data}.${signature}`;
 };
+
+  // Валидация access token
+export const verifyAccessToken = (token?: string): any => {
+  try {
+    return jwt.verify(token, getJwtSecret());
+  } catch (error) {
+    return null;
+  }
+}
+

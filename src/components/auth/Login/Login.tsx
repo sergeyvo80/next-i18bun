@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState, type ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './Login.module.scss';
@@ -10,6 +11,7 @@ type LoginFormValues = {
 };
 
 const LoginForm = (): ReactNode => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -37,7 +39,9 @@ const LoginForm = (): ReactNode => {
 
       const data = await response.json();
 
-      if (!response.ok) {
+      if (response.ok) {
+        router.push('/about');
+      } else {
         throw new Error(data?.message ?? 'Ошибка авторизации');
       }
 

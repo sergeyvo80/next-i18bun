@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 // import { userService } from '@/services/UserService';
-import { signJwt } from '@/utils/jwt';
+import { signJwt } from '@/lib/jwt';
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
