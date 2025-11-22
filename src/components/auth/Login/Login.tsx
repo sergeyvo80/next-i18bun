@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState, type ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
+import { useAuth } from '@/hooks/useAuth';
 import styles from './Login.module.scss';
 
 type LoginFormValues = {
@@ -12,6 +13,7 @@ type LoginFormValues = {
 
 const LoginForm = (): ReactNode => {
   const router = useRouter();
+  const { setUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -39,13 +41,15 @@ const LoginForm = (): ReactNode => {
 
       const data = await response.json();
 
+      setUser(data.user);
+      
       if (response.ok) {
         router.push('/about');
       } else {
         throw new Error(data?.message ?? 'Ошибка авторизации');
       }
 
-      window.localStorage.setItem('vki-token', data.token);
+      window.localStorage.setItem('accessToken', data.token);
       setSuccess('Авторизация успешна! Токен сохранён в localStorage.');
     }
     catch (submitError) {
@@ -93,10 +97,6 @@ const LoginForm = (): ReactNode => {
         <button className={styles.button} type='submit' disabled={isSubmitting}>
           {isSubmitting ? 'Загрузка...' : 'Войти'}
         </button>
-        <p className={styles.hint}>
-          После успешной авторизации токен сохраняется в localStorage по ключу
-          <code>vki-token</code>.
-        </p>
       </div>
 
       {error && <p className={styles.error}>{error}</p>}

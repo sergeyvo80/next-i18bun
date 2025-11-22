@@ -9,7 +9,6 @@ export async function initTranslations(lng: string, ns?: string) {
   await i18nInstance
     .use(initReactI18next)
     .use(resourcesToBackend((language: string, namespace: string) => {
-console.log('>>>>', language, namespace);
       return import(`../../public/locales/${language}/${namespace}.json`)
     }))
     .init(getOptions(lng, ns))

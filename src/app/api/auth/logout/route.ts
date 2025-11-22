@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     );
 
     // Очищаем оба токена из cookies
-    response.cookies.set('vki-token', '', {
+    response.cookies.set('accessToken', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',

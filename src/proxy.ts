@@ -24,7 +24,7 @@ export function proxy(request: NextRequest) {
   }
 
   // auth
-  const accessToken = request.cookies.get('vki-token')?.value;
+  const accessToken = request.cookies.get('accessToken')?.value;
 
   if (protectedRoutes.some(route => pathname.startsWith(`/${currentLocale}${route}`))) {
     if (!accessToken) {

@@ -1,17 +1,19 @@
 'use client';
 
-import { useParams, usePathname, useRouter } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { useLinkWithLocale } from '@/hooks/useLinkWithLocale';
-import { LocalizedLink } from '@/components/LocalizedLink/LocalizedLink';
+import { LocalizedLink } from '@/components/commons/LocalizedLink';
 import LanguageSwitcher from '@/components/layout/LanguageSwither';
 import styles from './Header.module.scss';
-
+import UserInterface from '@/types/UserInterface';
+import Profile from './Profile/Profile';
 
 interface Props {
   home: string;
   about: string;
   login: string;
   logout: string;
+  userFromServer?: UserInterface;
 }
 
 const Header = ({
@@ -19,57 +21,35 @@ const Header = ({
   about,
   login,
   logout,
+  userFromServer,
 }: Props): React.ReactElement => {
-  const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
   const lng = params.lng as string;
   const { getLocalizedHref } = useLinkWithLocale();
 
-
-  const logoutHandler = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-
-    const logout = async () => {
-      try {
-        const response = await fetch('/api/auth/logout', {
-          method: 'POST',
-          credentials: 'include'
-        });
-
-        if (response.ok) {
-          router.push('/login');
-        } else {
-          console.error('Logout failed');
-        }
-
-      } catch (error) {
-        console.error('Logout error:', error);
-      }
-    }
-
-    logout();
-  };
-
   return (
     <header className={styles.Header}>      
       <nav className={styles.menu}>
-        <div className={pathname === getLocalizedHref('') ? styles.linkActive : ''}>
-          <LocalizedLink href="/">{home}</LocalizedLink>
-        </div>
-        <div className={pathname.includes('/about') ? styles.linkActive : ''}>
-          <LocalizedLink href="/about">{about}</LocalizedLink>
-        </div>
-        <div className={pathname.includes('/login') ? styles.linkActive : ''}>
-          <LocalizedLink href="/login">{login}</LocalizedLink>
-        </div>
-        <div className={pathname.includes('/logout') ? styles.linkActive : ''}>
-          <LocalizedLink href="/logout" onClick={logoutHandler}>{logout}</LocalizedLink>
-        </div>
-        <div>
-          <LanguageSwitcher lng={lng} />
-        </div>
+        <LocalizedLink
+          href="/"
+          className={pathname === getLocalizedHref('') ? styles.linkActive : ''}
+        >
+          {home}
+        </LocalizedLink>
+        <LocalizedLink
+          href="/about"
+          className={pathname.includes('/about') ? styles.linkActive : ''}
+        >
+          {about}
+        </LocalizedLink>
+        <LanguageSwitcher lng={lng} />
       </nav>
+      <Profile 
+        login={login}
+        logout={logout}
+        userFromServer={userFromServer}
+      />
     </header>
   );
 }
