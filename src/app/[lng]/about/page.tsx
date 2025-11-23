@@ -10,7 +10,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
   const { t } = await initTranslations(lng)
 
   return {
-    title: t('about'),
+    title: t('about.title'),
   };
 };
 
@@ -20,10 +20,10 @@ const AboutPage = async ({ params }: PageProps) => {
 
   return (
     <div>
-      <h1>{t('about')}</h1>
-      <p>{t('about_p1')}</p>
-      <p>{t('about_p2')}</p>
-      <p>{t('about_p3')}</p>
+      <h1>{t('about.title')}</h1>
+      <p>{t('about.p1')}</p>
+      <p>{t('about.p2')}</p>
+      <p>{t('about.p3')}</p>
     </div>
   );
 };

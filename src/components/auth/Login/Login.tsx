@@ -6,12 +6,26 @@ import { useForm } from 'react-hook-form';
 import { useAuth } from '@/hooks/useAuth';
 import styles from './Login.module.scss';
 
-type LoginFormValues = {
+interface LoginFormValues {
   email: string;
   password: string;
 };
 
-const LoginForm = (): ReactNode => {
+interface Props {
+  t: {
+    email: string;
+    emailRequired: string;
+    password: string;
+    passwordRequired: string;
+    button: string;
+    success: string;
+    error: string;
+    error401: string;
+    error500: string;
+  }
+}
+
+const LoginForm = ({ t }: Props): ReactNode => {
   const router = useRouter();
   const { setUser } = useAuth();
   const {
@@ -46,31 +60,28 @@ const LoginForm = (): ReactNode => {
       if (response.ok) {
         router.push('/about');
       } else {
-        throw new Error(data?.message ?? 'Ошибка авторизации');
+        throw new Error(response.status.toString());
       }
 
       window.localStorage.setItem('accessToken', data.token);
-      setSuccess('Авторизация успешна! Токен сохранён в localStorage.');
+      setSuccess(t.success);
     }
-    catch (submitError) {
-      setError(
-        submitError instanceof Error ? submitError.message : 'Ошибка авторизации',
-      );
+    catch (err: unknown) {
+      setError(err instanceof Error && err.message === '401' ? t['error401'] : t['error500']);  
     }
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.field}>
-        <label className={styles.label} htmlFor='email'>
-          Email
+        <label htmlFor='email'>
+          {t.email}
         </label>
         <input
           id='email'
-          className={styles.input}
           type='email'
           placeholder='admin@example.com'
-          {...register('email', { required: 'Email обязателен' })}
+          {...register('email', { required: t.emailRequired })}
         />
         {errors.email?.message && (
           <span className={styles.error}>{errors.email.message}</span>
@@ -78,15 +89,14 @@ const LoginForm = (): ReactNode => {
       </div>
 
       <div className={styles.field}>
-        <label className={styles.label} htmlFor='password'>
-          Пароль
+        <label htmlFor='password'>
+          {t.password}
         </label>
         <input
           id='password'
-          className={styles.input}
           type='password'
           placeholder='••••••••'
-          {...register('password', { required: 'Пароль обязателен' })}
+          {...register('password', { required: t.passwordRequired })}
         />
         {errors.password?.message && (
           <span className={styles.error}>{errors.password.message}</span>
@@ -94,8 +104,12 @@ const LoginForm = (): ReactNode => {
       </div>
 
       <div className={styles.actions}>
-        <button className={styles.button} type='submit' disabled={isSubmitting}>
-          {isSubmitting ? 'Загрузка...' : 'Войти'}
+        <button
+          className={styles.button}
+          type='submit'
+          disabled={isSubmitting}
+        >
+          {t.button}
         </button>
       </div>
 

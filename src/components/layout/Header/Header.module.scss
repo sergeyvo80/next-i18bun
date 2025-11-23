@@ -1,13 +1,23 @@
 @use '../../../styles/main';
 
 .Header {
-  height: 70px;
+  height: 50px;
   background-color: var(--background2);
   display: flex;
   align-items: center;
   padding: 0 main.$webSidePadding;
   font-size: 20px;
   gap: 50px;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  
+  @media #{main.$mob} {
+    font-size: main.vwMax(18px);
+    padding: 0 main.vwMax(main.$mobSidePadding);
+    gap: main.vwMax(20px);
+    height: main.vwMax(50px);
+  }
 }
 
 .menu {
@@ -16,13 +26,79 @@
   justify-content: flex-start;
   gap: 40px;
   align-items: center;
-  font-size: 18px;
   color: var(--color);
+
+  @media #{main.$mob} {
+    font-size: main.vwMax(18px);
+    gap: main.vwMax(20px);
+  }
 
   a {
     color: var(--color);
     text-decoration: none;
   }
+  z-index: 200;
+
+  @media #{main.$mob} {
+    flex-direction: column;
+    margin-top: main.vwMax(120px);
+    display: none;
+  }
+
+  &--open {
+    @media #{main.$mob} {
+      display: flex;
+    }
+  }
+
+}
+
+.burger {
+  cursor: pointer;
+  display: none;
+
+  @media #{main.$mob} {
+    font-size: main.vwMax(30px);
+    display: flex;
+  }
+
+}
+
+.close {
+  display: none;
+  z-index: 200;
+  cursor: pointer;
+
+  @media #{main.$mob} {
+    font-size: main.vwMax(30px);
+    display: flex;
+    position: absolute;
+    top: main.vwMax(10px);
+    right: main.vwMax(20px);
+
+  }
+}
+
+.menuOverlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden !important;
+  background-color: var(--background2);
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  z-index: 99;  
+  display: none;
+
+  &--open {
+    // display: block;
+
+    @media #{main.$mob} {
+      display: block;
+    }
+  }  
 }
 
 .linkActive {

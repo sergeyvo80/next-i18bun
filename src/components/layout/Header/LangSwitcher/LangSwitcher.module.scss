@@ -1,0 +1,10 @@
+@use '../../../../styles/main';
+
+.LangSwitcher {
+  font-size: 18px;
+  
+  @media #{main.$mob} {
+    font-size: main.vwMax(18px);
+    gap: main.vwMax(20px);
+  }
+}

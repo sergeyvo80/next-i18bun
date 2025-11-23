@@ -1,14 +1,29 @@
 {
-  "welcome": "Welcome to our application",
-  "description": "This is a multilingual Next.js application",
-  "switch_language": "Switch language",
-  "current_language": "Current language",
-  "home": "Home",
-  "about": "About",
-  "login": "Login",
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "emailRequired": "Email required",
+    "password": "Password",
+    "passwordRequired": "Password required",
+    "button": "Login",
+    "success": "Success",
+    "error": "Error",
+    "error401": "Login or password incorrect",
+    "error500": "Authorization error"
+  },
+
   "logout": "Logout",
 
-  "about_p1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non consequat leo, vitae pretium ligula. Morbi fermentum ligula nec est pulvinar bibendum. Phasellus fermentum est ut pretium pellentesque. Sed nec tempus sem, vel tristique arcu. Vivamus ut dictum dui, vel bibendum tortor. Suspendisse sem tellus, dapibus et elementum vitae, dignissim quis erat. Proin molestie ante enim, cursus feugiat massa faucibus sed. Sed cursus tristique orci, ac egestas arcu dictum quis. Cras ut ex arcu. Proin nec ullamcorper nisl.",
-  "about_p2": "Nullam orci eros, mattis molestie convallis eu, lobortis sed nunc. Etiam mollis erat felis, in faucibus odio volutpat id. Vestibulum nisi sem, dapibus non efficitur id, euismod ac odio. Fusce in tortor tincidunt, luctus libero vitae, rhoncus sem. Vivamus ultricies aliquet leo id accumsan. Duis sit amet erat ut augue facilisis porta at non enim. Aenean vitae orci tellus. Integer ullamcorper eleifend sapien non imperdiet. Cras placerat volutpat magna nec dignissim. Aliquam elit leo, rhoncus facilisis laoreet vitae, ultrices at est.",
-  "about_p3": "Pellentesque dignissim mi tortor. Vestibulum vitae justo eget libero hendrerit ultricies. Vestibulum sed malesuada ex. Mauris sem nisl, euismod id sollicitudin dapibus, bibendum et nisl. Suspendisse eu congue mi. Praesent ligula risus, iaculis nec sapien in, cursus vehicula tortor. Donec accumsan mauris vel quam finibus, non iaculis nunc efficitur. Aliquam eleifend risus non libero interdum vehicula. Nulla iaculis, nunc molestie sagittis sodales, ex odio congue sem, ac mattis risus justo non augue. In rhoncus iaculis libero quis vehicula. Nam tristique mi at nibh finibus mollis. Aenean posuere euismod egestas. In convallis accumsan nibh eu gravida."
+  "home": {
+    "title": "Home",
+    "p1": "Welcome to our application",
+    "p2": "This is a multilingual Next.js application"
+  },
+
+  "about": {
+    "title": "About",
+    "p1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non consequat leo, vitae pretium ligula. Morbi fermentum ligula nec est pulvinar bibendum. Phasellus fermentum est ut pretium pellentesque. Sed nec tempus sem, vel tristique arcu. Vivamus ut dictum dui, vel bibendum tortor. Suspendisse sem tellus, dapibus et elementum vitae, dignissim quis erat. Proin molestie ante enim, cursus feugiat massa faucibus sed. Sed cursus tristique orci, ac egestas arcu dictum quis. Cras ut ex arcu. Proin nec ullamcorper nisl.",
+    "p2": "Nullam orci eros, mattis molestie convallis eu, lobortis sed nunc. Etiam mollis erat felis, in faucibus odio volutpat id. Vestibulum nisi sem, dapibus non efficitur id, euismod ac odio. Fusce in tortor tincidunt, luctus libero vitae, rhoncus sem. Vivamus ultricies aliquet leo id accumsan. Duis sit amet erat ut augue facilisis porta at non enim. Aenean vitae orci tellus. Integer ullamcorper eleifend sapien non imperdiet. Cras placerat volutpat magna nec dignissim. Aliquam elit leo, rhoncus facilisis laoreet vitae, ultrices at est.",
+    "p3": "Pellentesque dignissim mi tortor. Vestibulum vitae justo eget libero hendrerit ultricies. Vestibulum sed malesuada ex. Mauris sem nisl, euismod id sollicitudin dapibus, bibendum et nisl. Suspendisse eu congue mi. Praesent ligula risus, iaculis nec sapien in, cursus vehicula tortor. Donec accumsan mauris vel quam finibus, non iaculis nunc efficitur. Aliquam eleifend risus non libero interdum vehicula. Nulla iaculis, nunc molestie sagittis sodales, ex odio congue sem, ac mattis risus justo non augue. In rhoncus iaculis libero quis vehicula. Nam tristique mi at nibh finibus mollis. Aenean posuere euismod egestas. In convallis accumsan nibh eu gravida."
+  }
 }

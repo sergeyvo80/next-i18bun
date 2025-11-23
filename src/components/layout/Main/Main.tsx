@@ -1,9 +1,7 @@
-import type ChildrenType from '@/types/ChildrenType';
-
 import styles from './Main.module.scss';
 
 interface Props {
-  children?: ChildrenType;
+  children?: React.ReactNode;
 }
 
 const Main = ({ children }: Props): React.ReactElement => (

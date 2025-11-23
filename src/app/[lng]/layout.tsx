@@ -27,9 +27,9 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
       <body>
         {/* <TranslationProvider lng={lng}> */}
           <Header
-            home={t('home')}
-            about={t('about')}
-            login={t('login')}
+            home={t('home.title')}
+            about={t('about.title')}
+            login={t('login.title')}
             logout={t('logout')}
             userFromServer={userFromServer}
           />

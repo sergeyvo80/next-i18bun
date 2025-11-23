@@ -35,7 +35,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     if (!user || !user.isActive) {
       return NextResponse.json(
-        { message: 'Неверный логин или пароль' },
+        { message: 'Login or password incorrect' },
         { status: 401 },
       );
     }
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   catch (error) {
     console.error(error);
     return NextResponse.json(
-      { message: 'Ошибка авторизации' },
+      { message: 'Authorization error' },
       { status: 500 },
     );
   }
