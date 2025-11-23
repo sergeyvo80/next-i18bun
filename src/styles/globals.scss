@@ -44,7 +44,8 @@ input, select {
 input {
   padding: 10px;
   border-radius: 10px;
-  border: none;
+  border: var(--color) solid 1px;
+  
 
   @media #{main.$mob} {
     font-size: main.vwMax(14px);
@@ -58,6 +59,7 @@ button {
   border: none;
   border-radius: 10px;
   background: var(--color);
+  color: var(--color2);
   font-size: 1rem;
   font-weight: 16px;
   font-weight: bold;

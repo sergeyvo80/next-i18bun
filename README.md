@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Шаблон приложения: bun, nextjs, i18next, jwt
 
-## Getting Started
+Тестовый шаблон сделан для освоения стека: bun, nextjs, i18next, jwt.
 
-First, run the development server:
+Цели
+- проверить скорость менеджера пакетов bun
+- проверить мульти-языковую поддержку i18next (server/client side)
+- ознакомиться с авторизацией jwt на nextjs
 
+Установка пакетов:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Запуск версии для разработки:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+bun run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Открыть [http://localhost:3000](http://localhost:3000) в браузере.
 
-## Learn More
+## Мульти-языковая поддержка
 
-To learn more about Next.js, take a look at the following resources:
+На данный момент переводы используются только на Server Side это сделано для того, что бы контент был доступен для поисковых кравлеров.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Так же можно использовать переводы на клиентской части например для закрытых частей системы которым не требуется SEO оптимизация,
+для этого предусмотрен TranslationProvider:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```jsxreact
+<TranslationProvider lng={lng}>
+  <YourComponent />
+</TranslationProvider>
 
-## Deploy on Vercel
+// использование в компонентах
+const { t } = useTranslation();
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+{t("About.title")}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Авторизация
+
+Используется jwt авторизация, пароль и пользователь в апи закардкожен.
+
+## Адаптивность
+Два основных адаптива
+- мобильная версия до 1024px, резиновый контент до 640px
+- десктоп версия от 1024px
+  
+## Конфигурация
+Пока не добавлена, в дальнейшем следует вынести параметры secret, authToken, apiUrl в .env
